@@ -1,0 +1,22 @@
+*{
+    margin: center;
+    padding: 0px;
+    outline: solid black 1px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width:1200px;
+    height: auto;
+}
+
+.randomRecipes{
+    display: flex;
+    justify-content: center ;
+}
+
+.searchBar{
+    display: flex;
+    justify-content: center;
+}
