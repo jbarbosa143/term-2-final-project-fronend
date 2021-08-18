@@ -9,7 +9,6 @@ import RandomRecipes from './RandomRecipes';
         return (
             <div className="container">
                 <div className="randomRecipes">
-                    <h1>Add Random Recipes here</h1>
                     <RandomRecipes/>
                 </div>
                 <div className="searchBar">

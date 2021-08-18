@@ -1,7 +1,7 @@
 *{
     margin: center;
     padding: 0px;
-    outline: solid black 1px;
+    /* outline: solid black 1px; */
 }
 
 .container{
@@ -13,7 +13,8 @@
 
 .randomRecipes{
     display: flex;
-    justify-content: center ;
+    justify-content: space-evenly ;
+    align-content: center;
 }
 
 .searchBar{

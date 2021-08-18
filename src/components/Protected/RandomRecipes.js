@@ -1,6 +1,7 @@
 import React from 'react';
 import {  useReducer , useEffect } from "react";
 import axios from 'axios';
+import './RandomRecipes.css';
 
 const Actions = {
     Call_api: "call-api",
@@ -48,7 +49,7 @@ const initialState = {
         dispatch({ type: Actions.Call_api });
         const getRandomRecipes = async () => {
         let response = await axios.get(
-            `https://api.spoonacular.com/recipes/random?number=14&tags=vegetarian,desert&apiKey=${process.env.REACT_APP_COOKING_API}`
+            `https://api.spoonacular.com/recipes/random?number=5&tags=vegetarian,desert&apiKey=${process.env.REACT_APP_COOKING_API}`
         );
         console.log(response);
         if (response.status == 200) {
@@ -62,22 +63,26 @@ const initialState = {
     },[]);
 
     return (
-        <div>
+      <div className="itemsContainer">
         {loading ? (
-            <p>loading...</p>
+          <p>loading...</p>
         ) : error ? (
-            <p>{error}</p>
+          <p>{error}</p>
         ) : (
-            <ul>
+          <div className="randoContainer">
             {random.map((recipes) => (
-                <li key={recipes.id}>
-                <h1>{recipes.title}</h1>
-                <div>{recipes.image}</div>
-                </li>
+              <div className="itemContainer" key={recipes.id}>
+                <div>
+                <h5>{recipes.title}</h5>
+                </div>
+                <img src={recipes.image} alt="oops" height="100px"/>
+                <p>Required Time: {recipes.readyInMinutes}</p>
+                <p>Likes: {recipes.aggregateLikes}</p>
+              </div>
             ))}
-            </ul>
+          </div>
         )}
-        </div>
+      </div>
     );
 };
 

@@ -1,0 +1,34 @@
+*{
+    margin: center,auto;
+    
+}
+
+.itemsContainer{
+    display: flex;
+    justify-content:center;
+    flex-direction: row;
+    margin-top: 50px;
+    margin-left: 10px;
+    height: 400px;
+    width: 100%;
+    outline: solid black 1px;
+}
+
+.randoContainer{
+    margin: 50px 0px 0px 0px;
+    display: flex;
+    justify-content:space-between;
+    outline: solid black 1px;
+    height:300px;
+    width:90%;
+}
+
+.itemContainer{
+    width:200px;
+    outline: solid black 1px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    font-size: 12px;
+}
+

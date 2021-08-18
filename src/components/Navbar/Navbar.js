@@ -31,7 +31,7 @@ function Navbar(props) {
     const navLinkTitleTwo =  isUserLoggedIn ? "/logout" : "/sign-up";
     const navLinkDisplayTwo = isUserLoggedIn ? "Logout" : "Sign-Up";
     const navLinkTitleThree = isUserLoggedIn ? "/recipes-home" : "";
-    const navLinkDisplayThree = isUserLoggedIn ? "Search" : "";
+    const navLinkDisplayThree = isUserLoggedIn ? "Recipe Search" : "";
     const logoutButton = isUserLoggedIn ? logout: () => {};
 // ------------------------------------------------------------------
     async function logout(){
