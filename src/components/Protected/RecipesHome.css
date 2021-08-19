@@ -15,6 +15,11 @@
     display: flex;
     justify-content: space-evenly ;
     align-content: center;
+    outline: solid gray 1px;
+    background-image: url('https://discoveries.childrenshospital.org/wp-content/uploads/2019/05/AdobeStock_155822272-Food-Allergy-half-size.jpeg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:60% ;
 }
 
 .searchBar{

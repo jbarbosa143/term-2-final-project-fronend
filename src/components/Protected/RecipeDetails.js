@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react';
 
-function RecipeList(props){
+function RecipeDetails(props){
 <h1>Hello World!!!</h1>
     // return props.recipeArray.map((item)=> {
     //     return(
@@ -14,4 +14,4 @@ function RecipeList(props){
     // })
 }
 
-export default RecipeList;
+export default RecipeDetails;

@@ -11,24 +11,39 @@
     margin-left: 10px;
     height: 400px;
     width: 100%;
-    outline: solid black 1px;
+
 }
 
 .randoContainer{
     margin: 50px 0px 0px 0px;
     display: flex;
     justify-content:space-between;
-    outline: solid black 1px;
+    /* outline: solid black 1px; */
     height:300px;
     width:90%;
+    
 }
 
 .itemContainer{
     width:200px;
-    outline: solid black 1px;
+    outline: solid lightgray 1px;
     display: flex;
     align-content: center;
     flex-direction: column;
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color:#3f51b5;
+}
+
+.itemHeader{
+    height: 80px;
+    font-size: 18px;
+    font-family:Georgia,'Times New Roman',Times,serif;
+
+    /* background-color: #3f51b5; */
+    border-bottom: lightgrey solid 4px;
+    color:#3f51b5;
 }
 

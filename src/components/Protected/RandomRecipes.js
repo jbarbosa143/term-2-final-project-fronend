@@ -2,6 +2,7 @@ import React from 'react';
 import {  useReducer , useEffect } from "react";
 import axios from 'axios';
 import './RandomRecipes.css';
+import Spinner from '../Spinner/Spinner';
 
 const Actions = {
     Call_api: "call-api",
@@ -10,48 +11,47 @@ const Actions = {
     };
 
 const randomReducer = (state, action) => {
-    switch (action.type) {
-        case Actions.Call_api: {
-        return {
-            ...state,
-            loading: true,
-        };
-        }
-        case Actions.Success: {
-        return {
-            ...state,
-            loading: false,
-            random: action.data,
-        };
-        }
-        case Actions.Error: {
-        return {
-            ...state,
-            loading: false,
-            error: action.error,
-        };
-        }
+  switch (action.type) {
+    case Actions.Call_api: {
+      return {
+        ...state,
+        loading: true,
+      };
     }
-    };
+    case Actions.Success: {
+      return {
+        ...state,
+        loading: false,
+        random: action.data,
+      };
+    }
+    case Actions.Error: {
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    }
+  }
+};
 
 const initialState = {
-    random: [],
-    loading: false,
-    error: null,
-    };
+  random: [],
+  loading: false,
+  error: null,
+};
 
 
-    const RandomRecipes = () => {
-    const [state, dispatch] = useReducer(randomReducer, initialState);
-    const { random, loading, error } = state;
+  const RandomRecipes = () => {
+  const [state, dispatch] = useReducer(randomReducer, initialState);
+  const { random, loading, error } = state;
 
-    useEffect(() => {
-        dispatch({ type: Actions.Call_api });
-        const getRandomRecipes = async () => {
-        let response = await axios.get(
-            `https://api.spoonacular.com/recipes/random?number=5&tags=vegetarian,desert&apiKey=${process.env.REACT_APP_COOKING_API}`
-        );
-        console.log(response);
+  useEffect(() => {
+    dispatch({ type: Actions.Call_api });
+      const getRandomRecipes = async () => {
+      let response = await axios.get(
+        `https://api.spoonacular.com/recipes/random?number=5&tags=vegetarian,desert&apiKey=${process.env.REACT_APP_COOKING_API}`
+      );
         if (response.status == 200) {
             dispatch({ type: Actions.Success, data: response.data.recipes });
             return;
@@ -65,18 +65,18 @@ const initialState = {
     return (
       <div className="itemsContainer">
         {loading ? (
-          <p>loading...</p>
+          <p><Spinner/></p>
         ) : error ? (
           <p>{error}</p>
         ) : (
           <div className="randoContainer">
             {random.map((recipes) => (
               <div className="itemContainer" key={recipes.id}>
-                <div>
+                <div className="itemHeader" onClick="">
                 <h5>{recipes.title}</h5>
                 </div>
                 <img src={recipes.image} alt="oops" height="100px"/>
-                <p>Required Time: {recipes.readyInMinutes}</p>
+                <p>Required Time: {recipes.readyInMinutes} Minutes</p>
                 <p>Likes: {recipes.aggregateLikes}</p>
               </div>
             ))}

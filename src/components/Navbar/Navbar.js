@@ -7,6 +7,8 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { AuthContext } from '../../context/AuthContext';
 import checkAuthCookie from "../hooks/checkAuthCookie";
+import './NavBar.css'
+
 
 
 const useStyle = makeStyles((theme) => ({
@@ -56,27 +58,42 @@ function Navbar(props) {
     return (
         <div className={classes.root}>
             <AppBar position="static">
-                <Toolbar>
-                    <img src="" alt="kitten"/>
-                    <Typography variant="h6" className={classes.title}>
-                        <p>Welcome to Free Recipes!</p>
-                    </Typography>
+            <Toolbar>
+                <NavLink
+                activeStyle={{ color: "red" }}
+                exact
+                to={navLinkTitleThree}
+                >
+                <Button color="inherit" style={{ color: "#008000" }}>
+                    {navLinkDisplayThree}
+                </Button>
+                </NavLink>
 
-                    <NavLink activeStyle={{color: "red"}} exact to={navLinkTitleThree}>
-                        <Button color="inherit" style={{color:"orange"}}>{navLinkDisplayThree}</Button>
-                    </NavLink>
+                <Typography
+                variant="h6"
+                className={classes.title}
+                style={{ color: "#008000" }}
+                >
+                <p style={{textAlign:'center'}}>Welcome to Free Recipes!</p>
+                </Typography>
 
-                    <NavLink activeStyle={{ color: "red" }} exact to={navLinkTitleOne}>
-                        <Button color="inherit" style={{ color: "orange" }}>
-                        {navLinkDisplayOne}</Button>
-                    </NavLink>
+                <NavLink activeStyle={{ color: "red" }} exact to={navLinkTitleOne}>
+                <Button color="inherit" style={{ color: "#008000" }}>
+                    {navLinkDisplayOne}
+                </Button>
+                </NavLink>
 
-                    <NavLink activeStyle={{ color: "red" }} exact to={navLinkTitleTwo} onClick={logoutButton}> 
-                        <Button color="inherit" style={{ color: "orange" }}>
-                        {navLinkDisplayTwo}</Button>
-                    </NavLink>
-
-                </Toolbar>
+                <NavLink
+                activeStyle={{ color: "red" }}
+                exact
+                to={navLinkTitleTwo}
+                onClick={logoutButton}
+                >
+                <Button color="inherit" style={{ color: "#008000" }}>
+                    {navLinkDisplayTwo}
+                </Button>
+                </NavLink>
+            </Toolbar>
             </AppBar>
         </div>
     );
