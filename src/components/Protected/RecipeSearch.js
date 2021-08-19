@@ -47,7 +47,7 @@ const RecipeSearch = () => {
     useEffect(()=> {
         dispatch({type:Actions.Call_api});
         const getSearchRecipe = async () => {
-            let response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${title}&apiKey=${process.env.REACT_APP_COOKING_API}`
+            let response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${value}&apiKey=${process.env.REACT_APP_COOKING_API}`
             );
             console.log(response);
             if(response.status == 200){
@@ -56,7 +56,7 @@ const RecipeSearch = () => {
             }
             dispatch({type:Actions.Error, error:response.error});
         };
-        getSearchRecipe(`${title}`);
+        getSearchRecipe(`${value}`);
     },[]);
 
     return(
