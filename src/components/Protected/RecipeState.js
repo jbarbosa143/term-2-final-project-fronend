@@ -15,12 +15,10 @@ const RecipeState = (props) => {
             console.log(12123124);
             let response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${value}&apiKey=${process.env.REACT_APP_COOKING_API}`
             );
-                console.log(response);
-                setValue("")
                 let results = response.data.results
                 if (response.status === 200) {
                 setSearchRecipeArr(results)
-                console.log(results);
+                
                 }  
         } catch (e) {}
     }
@@ -29,6 +27,7 @@ const RecipeState = (props) => {
         <SearchContext.Provider value={{SearchBar,value,setValue,setSearchRecipeArr,searchRecipeArr}}>
             {props.children}
         </SearchContext.Provider>
+
     )
 }
     

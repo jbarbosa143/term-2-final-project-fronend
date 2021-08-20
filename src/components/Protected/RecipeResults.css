@@ -1,0 +1,19 @@
+*{
+    margin: center;
+    
+}
+
+.searchContainer{
+    outline: solid black 1px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    height:650px;
+}
+
+.searchItemContainer{
+    outline: solid black 1px;
+    height:45%;
+    width: 18%;
+}
