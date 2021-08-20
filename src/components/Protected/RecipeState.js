@@ -20,7 +20,9 @@ const RecipeState = (props) => {
                 setSearchRecipeArr(results)
                 
                 }  
-        } catch (e) {}
+        } catch (e) {
+            return (e)
+        }
     }
     
     return(
