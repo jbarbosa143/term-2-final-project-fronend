@@ -75,7 +75,7 @@ const initialState = {
                 <div className="itemHeader" onClick="">
                 <h5>{recipes.title}</h5>
                 </div>
-                <img src={recipes.image} alt="oops" height="100px"/>
+                <img src={recipes.image} alt="oops!, There Seems To Be No Image For this Item... Sorry For the incoveniance" height="100px"/>
                 <p>Required Time: {recipes.readyInMinutes} Minutes</p>
                 <p>Likes: {recipes.aggregateLikes}</p>
               </div>

@@ -57,7 +57,7 @@ function Navbar(props) {
 // --------------------------------------------------------------------------
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar style={{background:"black"}}position="static">
             <Toolbar>
                 <NavLink
                 activeStyle={{ color: "red" }}

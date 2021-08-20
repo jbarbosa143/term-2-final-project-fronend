@@ -52,7 +52,6 @@ function useFetchAPI(url){
                 setSuccessMessage(response.data.message);
             }else{
                 setIsLoading(false);
-                console.log(response);
 
                 dispatch({
                     type:"LOGIN",

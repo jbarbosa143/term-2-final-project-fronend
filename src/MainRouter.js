@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { SearchContext } from './context/SearchContext';
+import RecipeState from './components/Protected/RecipeState';
+
 // ==----------------------------------------------------------------------------------
 
 const Home = React.lazy(() => import('./components/Home/Home'));
@@ -14,22 +17,28 @@ const Auth = React.lazy(() => import("./components/Auth/Auth"));
 const NotFound = React.lazy(() => import("./components/NotFound/NotFound"));
 const RecipesHome = React.lazy(()=> import("./components/Protected/RecipesHome"));
 const Profile = React.lazy(()=> import("./components/Profile/Profile"));
+const RecipeResults = React.lazy(()=>import('./components/Protected/RecipeResults'))
 
 // ----------------------------------------------------------------------------------------------------
 function MainRouter() {
     return (
         <div>
             <Navbar />
-            <Switch>
-                    <Route exact path="/sign-up" component={Auth} />
-                    <Route exact path="/login" component={Auth} />
-                    <Route exact path="/logout" render={() => <Redirect to="/login" />} />
-                    <Route exact path ="/" component={Home}/>
-
-                    <PrivateRoute exact path="/recipes-home" component={RecipesHome}/>
-                    <PrivateRoute exact path = "/profile" component={Profile}/> 
-                    <Route component={NotFound} />
-            </Switch>
+                <Switch>
+                        <Route exact path="/sign-up" component={Auth} />
+                        <Route exact path="/login" component={Auth} />
+                        <Route exact path="/logout" render={() => <Redirect to="/login" />} />
+                        
+                        <RecipeState>
+                            <PrivateRoute exact path="/recipes-home" component={RecipesHome}/>
+                            <Route exact path="/recipe-results/:recipes" component={RecipeResults}/>
+                        </RecipeState>
+                            
+                        
+                        <PrivateRoute exact path = "/profile" component={Profile}/> 
+                        <Route exact path ="/" component={Home}/>
+                        <Route component={NotFound} />
+                </Switch>
         </div>
     );
 }

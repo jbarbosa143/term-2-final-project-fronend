@@ -1,36 +1,32 @@
-import React ,{ Component, useState } from 'react';
+import React ,{ Component, useState, useEffect, useContext } from 'react';
 import { Link } from 'react';
+
 import axios from 'axios';
 import './RecipesHome.css';
 import RandomRecipes from './RandomRecipes';
-import RecipeSearch from './RecipeSearch';
+import { SearchContext } from '../../context/SearchContext';
 
-function Input(initalState){
-    const [value, setValue] = useState(initalState);
+import RecipeResults from './RecipeResults';
 
-    function onChange(e){
-        setValue(e.target.value);
-    }
 
-    function clearInput(){
-        setValue("");
-    }
+function RecipesHome() {
+    const {SearchBar,value,setValue} = useContext(SearchContext)
 
-    return [value, onChange, clearInput];
-}
-
-    function RecipesHome() {
         return (
             <div className="container">
+                <div className="searchBar">
+                    <input type="text" placeholder="Search Recipe Here"  onChange={(e)=> setValue(e.target.value)}/>
+                    <button type="submit" onClick={(e)=> SearchBar(e)}>Search</button>
+                </div>
                 <div className="randomRecipes">
                     <RandomRecipes/>
                 </div>
-                <div className="searchBar">
-                    <input type="text"/>
-                    <button>Search</button>
+                <hr/>
+                <div className="searchResults">
+                    <RecipeResults/>
                 </div>
             </div>
-        )
-    };
+        )    
+};
 
 export default RecipesHome;

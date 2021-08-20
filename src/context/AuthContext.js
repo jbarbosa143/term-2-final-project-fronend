@@ -9,7 +9,6 @@ const initialState = {
 function reducer(state,action){
     switch(action.type){
         case "LOGIN":
-            console.log(action);
             return{
                 user:{
                     email: action.user.email,
@@ -18,7 +17,6 @@ function reducer(state,action){
                 },
             };
         case "LOG_OUT":
-            console.log(action);
             return{
                 user:null,
             };
