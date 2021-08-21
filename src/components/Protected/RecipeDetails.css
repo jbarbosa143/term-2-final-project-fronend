@@ -1,0 +1,17 @@
+*{
+    margin: center;
+}
+
+.detailContainer{
+    display: flex;
+    flex-direction:row ;
+    width:100%;
+}
+
+.basicInfo{
+    width:45%
+}
+
+.ingred{
+    width:45%;
+}

@@ -3,6 +3,7 @@ import {  useReducer , useEffect } from "react";
 import axios from 'axios';
 import './RandomRecipes.css';
 import Spinner from '../Spinner/Spinner';
+import { Link } from 'react-router-dom';
 
 const Actions = {
     Call_api: "call-api",
@@ -72,12 +73,14 @@ const initialState = {
           <div className="randoContainer">
             {random.map((recipes) => (
               <div className="itemContainer" key={recipes.id}>
-                <div className="itemHeader" onClick="">
-                <h5>{recipes.title}</h5>
-                </div>
-                <img src={recipes.image} alt="oops!, There Seems To Be No Image For this Item... Sorry For the incoveniance" height="100px"/>
-                <p>Required Time: {recipes.readyInMinutes} Minutes</p>
-                <p>Likes: {recipes.aggregateLikes}</p>
+                <Link  to={{pathname:`/RecipeDetails/${recipes.id}`}}>
+                  <div className="itemHeader" >
+                  <h5>{recipes.title}</h5>
+                  </div>
+                  <img src={recipes.image} alt="oops!, There Seems To Be No Image For this Item... Sorry For the incoveniance" height="100px"/>
+                  <p>Required Time: {recipes.readyInMinutes} Minutes</p>
+                  <p>Likes: {recipes.aggregateLikes}</p>
+                </Link>
               </div>
             ))}
           </div>

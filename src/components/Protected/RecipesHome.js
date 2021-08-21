@@ -1,7 +1,4 @@
-import React ,{ Component, useState, useEffect, useContext } from 'react';
-import { Link } from 'react';
-
-import axios from 'axios';
+import React ,{ useContext } from 'react';
 import './RecipesHome.css';
 import RandomRecipes from './RandomRecipes';
 import { SearchContext } from '../../context/SearchContext';

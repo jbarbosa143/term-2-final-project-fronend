@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import { SearchContext } from './context/SearchContext';
 import RecipeState from './components/Protected/RecipeState';
 
 // ==----------------------------------------------------------------------------------
@@ -17,7 +16,7 @@ const Auth = React.lazy(() => import("./components/Auth/Auth"));
 const NotFound = React.lazy(() => import("./components/NotFound/NotFound"));
 const RecipesHome = React.lazy(()=> import("./components/Protected/RecipesHome"));
 const Profile = React.lazy(()=> import("./components/Profile/Profile"));
-const RecipeResults = React.lazy(()=>import('./components/Protected/RecipeResults'))
+const RecipeDetails = React.lazy(( )=> import('./components/Protected/RecipeDetails'))
 
 // ----------------------------------------------------------------------------------------------------
 function MainRouter() {
@@ -31,7 +30,7 @@ function MainRouter() {
                         
                         <RecipeState>
                             <PrivateRoute exact path="/recipes-home" component={RecipesHome}/>
-                            <Route exact path="/recipe-results/:recipes" component={RecipeResults}/>
+                            <Route exact path="/recipeDetails/:recipes" component={RecipeDetails}/>
                         </RecipeState>
                             
                         
