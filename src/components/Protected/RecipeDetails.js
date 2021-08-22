@@ -11,18 +11,32 @@ const RecipeDetails = (props)=>{
     const {cookTime} = useContext(SearchContext);
     const {recipeSum} = useContext(SearchContext);
     const {ingredArr} = useContext(SearchContext);
+    const {ingredSteps} = useContext(SearchContext)
 
 let renderIngredArr;
-if(ingredArr){
-    renderIngredArr = ingredArr.map((item)=>(
+    if(ingredArr){
+        renderIngredArr = ingredArr.map((item)=>(
         <ul key={item.id}>
-            <li>{item.name}</li>
-                <br/>
+            {/* <li>{item.name}</li>
+                <br/> */}
             <li>{item.original}</li>
         </ul>
-    ))
+        ))
     };
-    
+
+let renderSteps;
+    if(ingredSteps){
+        renderSteps = ingredSteps.steps.map((items)=>{
+            return(
+                <ul> 
+                    <li>{items.step}</li>
+                </ul>
+                
+                )
+        })
+    }
+
+
     useEffect(() => {
         Details(recipes);
     }, [])
@@ -30,23 +44,29 @@ if(ingredArr){
     return(
         <div className="detailContainer">
             <div className="basicInfo">
-                <h1>{recipeName}</h1>
-                <img src={recipeImg}/>
+                <h2>{recipeName}</h2>
+                <img src={recipeImg} height='250px'/>
                 <p>Cook Time: {cookTime} Minutes</p>
                 <div className="summary">
                     <p>{recipeSum}</p>
                 </div>
             </div>
-            <div className="ingred">
-                <div className="ingredHeader">  
-                    <h3>Ingrediants</h3>
+            <div className='instContainer'>
+                <div className="ingred">
+                    
+                        <div className="ingredHeader">  
+                            <h2>Ingrediants</h2>
+                        </div>
+                        <div className="ingredList">
+                            {renderIngredArr}
+                        </div>
+                    
                 </div>
-                <div className="ingredList">
-                    {renderIngredArr}
+                <div className='instructions'>
+                    <h2>Instructions</h2>
+                        {renderSteps}
                 </div>
-            </div>
-            
-
+            </div>    
         </div>
     )
     

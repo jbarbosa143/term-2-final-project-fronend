@@ -13,9 +13,9 @@ const RecipeState = (props) => {
   const [cookTime,setCookTime] = useState("");
   const [recipeSum, setRecipeSum] = useState("");
   const [ingredArr, setIngredArr] = useState("");
+  const [ingredSteps, setIngredSteps] = useState("");
 // -------------------------------------------------------
   async function SearchBar(e) {
-    console.log(1);
     try {
       let response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${value}&apiKey=${process.env.REACT_APP_COOKING_API}`);
       let results = response.data.results
@@ -30,7 +30,6 @@ const RecipeState = (props) => {
   }
     
   async function Details(recipes) {
-    console.log(2);
     try {
       let details = await axios.get(`https://api.spoonacular.com/recipes/${recipes}/information?apiKey=${process.env.REACT_APP_COOKING_API}`);
         if (details.status === 200) {
@@ -39,7 +38,9 @@ const RecipeState = (props) => {
         setCookTime(details.data.readyInMinutes);
         setRecipeSum(details.data.summary);
         setIngredArr(details.data.extendedIngredients);
-        console.log(details);
+        setIngredSteps(details.data.analyzedInstructions[0]);
+
+        console.log(ingredSteps);
         }
     } catch (e) {
       return e;
@@ -47,7 +48,7 @@ const RecipeState = (props) => {
   }
 
     return(
-        <SearchContext.Provider value={{SearchBar,value,setValue,setSearchRecipeArr,searchRecipeArr,recipeId,Details,recipeName,recipeImg,cookTime,recipeSum,ingredArr}}>
+        <SearchContext.Provider value={{SearchBar,value,setValue,setSearchRecipeArr,searchRecipeArr,recipeId,Details,recipeName,recipeImg,cookTime,recipeSum,ingredArr,ingredSteps}}>
             {props.children}
         </SearchContext.Provider>
 
