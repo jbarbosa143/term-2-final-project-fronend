@@ -9,7 +9,7 @@ function RecipeResults(props){
     useContext(SearchContext);
     console.log(searchRecipeArr);
     useEffect(() => {
-    SearchBar();
+    // SearchBar();
 
         console.log(searchRecipeArr);
     }, []); 
@@ -29,7 +29,6 @@ function RecipeResults(props){
         ))}
         </div>
     );
-    
 }
 
 export default RecipeResults;

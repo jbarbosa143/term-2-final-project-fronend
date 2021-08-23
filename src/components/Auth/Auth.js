@@ -120,6 +120,7 @@ function Auth(props) {
         props.history.push("/recipes-home");
     }
     return (
+        
         <Grid container spacing={0} justifyContent="center">
             {successMessageValue && successMessage()}
             {error && errorMessage()}

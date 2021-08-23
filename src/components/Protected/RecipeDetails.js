@@ -36,20 +36,22 @@ let renderSteps;
         })
     }
 
+let newRecipeSum = recipeSum.replace(/<b>|<\/b>/g, "");
 
     useEffect(() => {
         Details(recipes);
     }, [])
-    
+    console.log(recipeSum);
     return(
         <div className="detailContainer">
             <div className="basicInfo">
                 <h2>{recipeName}</h2>
                 <img src={recipeImg} height='250px'/>
                 <p>Cook Time: {cookTime} Minutes</p>
-                <div className="summary">
-                    <p>{recipeSum}</p>
-                </div>
+                <h3>Summary:</h3>
+            <div className="summary">
+                    <p>{newRecipeSum}</p>
+            </div>
             </div>
             <div className='instContainer'>
                 <div className="ingred">
