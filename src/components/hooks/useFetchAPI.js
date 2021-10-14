@@ -4,7 +4,7 @@ import axios from "axios";
 
 function useFetchAPI(url){
     const baseURL =
-      process.env.NODE_ENV === "development"
+      process.env.REACT_APP_API === "development"
         ? "http://localhost:3001/api"
         : "/api";
 
